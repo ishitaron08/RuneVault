@@ -43,7 +43,7 @@ export default function () {
 
       <div className="flex flex-col items-center mt-20 w-full">
         <div className="text-xl text-center sm:text-4xl dark:text-white text-black">
-          Works across all Blockchains ishit
+          Works across all Blockchains 
         </div>
         {/* <div className="grid grid-cols-2 w-full"> */}
         <div className="w-full flex flex-col justify-between max-w-[70rem] md:flex-row">
