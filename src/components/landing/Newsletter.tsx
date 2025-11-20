@@ -5,8 +5,8 @@ import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-van
 export default function Newsletter() {
 	const placeholders = [
 		"What's the first rule of Fight Club?",
-		"What’s the current price of Ethereum?",
-		"Follow SmoggyOwO on github ;)",
+		"What's the current price of Ethereum?",
+		"Follow ishitaron08 on github ;)",
 		"Securely manage your crypto with just a Google account",
 		"Ready to explore the crypto world?",
 	];

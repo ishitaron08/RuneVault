@@ -194,7 +194,7 @@ export default function Portfolio() {
         <div className="col-span-2">
           <div className="flex items-center justify-between mb-6">
             <h1 className="text-4xl font-medium">
-              Weclome back, {session.data?.user?.name}
+              Welcome back, Ishit Aron
             </h1>
             <Button
               variant="ghost"

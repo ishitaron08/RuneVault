@@ -14,7 +14,7 @@ function FooterCredit() {
   return (
     <div className="hidden md:block fixed bottom-0 right-0 mb-6 mr-8 text-sm sm:text-base text-black dark:text-white">
       <a
-        href="https://github.com/SmoggyOwO"
+        href="https://github.com/ishitaron08"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -22,7 +22,7 @@ function FooterCredit() {
         <span role="img" aria-label="heart">
           ❤️
         </span>{" "}
-        by Aditya
+        by Ishit Aron
       </a>
     </div>
   );
