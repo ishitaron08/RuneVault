@@ -1,0 +1,76 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
+        IMAGE_NAME = "runevault"
+        DOCKERHUB_REPO = "docker.io/${DOCKERHUB_CREDENTIALS_USR}/${IMAGE_NAME}"
+        EC2_USER = "ubuntu" // or ec2-user, depending on AMI
+        EC2_HOST = "ec2-xx-xx-xx-xx.compute-1.amazonaws.com"
+        CONTAINER_NAME = "runevault-app"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out code from GitHub...'
+                checkout scm
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo "Building Docker image ${env.IMAGE_NAME}..."
+                sh "docker build -t ${env.IMAGE_NAME}:latest ."
+            }
+        }
+
+        stage('Login to DockerHub') {
+            steps {
+                echo 'Logging in to DockerHub...'
+                sh "echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login -u ${DOCKERHUB_CREDENTIALS_USR} --password-stdin"
+            }
+        }
+
+        stage('Push to DockerHub') {
+            steps {
+                echo "Tagging and pushing image to ${env.DOCKERHUB_REPO}..."
+                sh "docker tag ${env.IMAGE_NAME}:latest ${env.DOCKERHUB_REPO}:latest"
+                sh "docker push ${env.DOCKERHUB_REPO}:latest"
+            }
+        }
+
+        stage('Deploy to EC2') {
+            steps {
+                echo "Deploying to EC2..."
+
+                sshagent (credentials: ['ec2-ssh-key']) {
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} << 'EOF'
+                            echo 'Logging into DockerHub on EC2...'
+                            echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login -u ${DOCKERHUB_CREDENTIALS_USR} --password-stdin
+
+                            echo 'Stopping and removing old container (if exists)...'
+                            docker rm -f ${CONTAINER_NAME} || true
+
+                            echo 'Pulling latest image...'
+                            docker pull ${DOCKERHUB_REPO}:latest
+
+                            echo 'Starting new container...'
+                            docker run -d --name ${CONTAINER_NAME} -p 80:80 ${DOCKERHUB_REPO}:latest
+                        EOF
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Deployment to EC2 successful!'
+        }
+        failure {
+            echo 'Deployment failed.'
+        }
+    }
+}
