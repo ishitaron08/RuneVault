@@ -35,7 +35,7 @@ const quickSand = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://runevault.smoggyowo.tech"),
+  metadataBase: new URL("https://runevault.vercel.app"),
   title: {
     default: "RuneVault - Your Next-Gen Blockchain Wallet",
     template: "%s | RuneVault",
@@ -61,11 +61,11 @@ export const metadata: Metadata = {
     "blockchain technology",
     "crypto security",
     "wallet integration",
-    "Aditya Singh",
-    "SmoggyOwO",
+    "Ishit Aron",
+    "ishitaron08",
   ],
-  authors: [{ name: "Aditya Singh", url: "https://github.com/SmoggyOwO" }],
-  creator: "Aditya Singh",
+  authors: [{ name: "Ishit Aron", url: "https://github.com/ishitaron08" }],
+  creator: "Ishit Aron",
   publisher: "RuneVault",
   formatDetection: {
     email: false,
@@ -73,17 +73,17 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "https://runevault.smoggyowo.tech",
+    canonical: "https://runevault.vercel.app",
   },
   openGraph: {
     title: "RuneVault - Your Next-Gen Blockchain Wallet",
     description:
       "Experience seamless management of digital assets across all blockchains. Create wallets with Google Sign-In or connect existing ones. RuneVault brings security, innovation, and simplicity to your fingertips.",
-    url: "https://runevault.smoggyowo.tech",
+    url: "https://runevault.vercel.app",
     siteName: "RuneVault",
     images: [
       {
-        url: "https://runevault.smoggyowo.tech/assets/runevault.webp",
+        url: "https://runevault.vercel.app/assets/runevault.webp",
         width: 1200,
         height: 630,
         alt: "RuneVault - Next-Gen Blockchain Wallet",
@@ -99,8 +99,8 @@ export const metadata: Metadata = {
     description:
       "Manage digital assets securely and effortlessly across all blockchains. Create wallets with Google Sign-In. RuneVault is your gateway to the blockchain universe.",
     site: "@RuneVault",
-    creator: "@SmoggyOwO",
-    images: ["https://runevault.smoggyowo.tech/assets/runevault.webp"],
+    creator: "@ishitaron08",
+    images: ["https://runevault.vercel.app/assets/runevault.webp"],
   },
   robots: {
     index: true,
@@ -118,11 +118,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "https://runevault.smoggyowo.tech/assets/runevault.webp", sizes: "32x32", type: "image/webp" },
+      { url: "https://runevault.vercel.app/assets/runevault.webp", sizes: "32x32", type: "image/webp" },
     ],
     apple: [
       { 
-        url: "https://runevault.smoggyowo.tech/assets/runevault.webp", 
+        url: "https://runevault.vercel.app/assets/runevault.webp", 
         sizes: "180x180", 
         type: "image/webp" 
       }
@@ -139,7 +139,7 @@ export const metadata: Metadata = {
     "msapplication-TileColor": "#000000",
     "msapplication-config": "/browserconfig.xml",
   },
-  assets: ["https://runevault.smoggyowo.tech/assets"],
+  assets: ["https://runevault.vercel.app/assets"],
 };
 
 export default function RootLayout({
