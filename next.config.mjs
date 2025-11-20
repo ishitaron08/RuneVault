@@ -11,21 +11,6 @@ const nextConfig = {
   },
   // Enable standalone output for Docker deployment
   output: 'standalone',
-  async redirects() {
-		return [
-			{
-				source: "/:path*",
-				has: [
-					{
-						type: "host",
-						value: "rune-vault.vercel.app",
-					},
-				],
-				destination: "https://runevault.smoggyowo.tech/:path*",
-				permanent: true,
-			},
-		];
-	},
 };
 
 export default nextConfig;
